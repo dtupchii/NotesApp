@@ -1,0 +1,59 @@
+﻿<Page x:Class="NotesApp.EditingDetailsPage"
+      xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+      xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+      xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006" 
+      xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
+      xmlns:local="clr-namespace:NotesApp"
+      mc:Ignorable="d" 
+      d:DesignHeight="450" d:DesignWidth="350"
+      Title="EditingDetailsPage">
+
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="50"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <Grid Background="#f2db9c">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <StackPanel Orientation="Horizontal">
+                <Button x:Name="BackButton"
+                        Style="{StaticResource NavigateButtonsStyle}"
+                        Click="BackButton_Click">
+                    <Image Source="C:\Users\daria\source\repos\NotesApp\NotesApp\Styles\Icons\back_icon.png"
+                           Margin="3"/>
+                </Button>
+                <Button Style="{StaticResource NavigateButtonsStyle}"
+                        x:Name="DeleteButton"
+                        Click="DeleteButton_Click">
+                    <Image Source="C:\Users\daria\source\repos\NotesApp\NotesApp\Styles\Icons\deleteicon.png"
+                           Margin="6.5"/>
+                </Button>
+                <Button Style="{StaticResource NavigateButtonsStyle}"
+                        x:Name="SaveButton"
+                        Click="SaveButton_Click">
+                    <Image Source="C:\Users\daria\source\repos\NotesApp\NotesApp\Styles\Icons\saveIcon.png"
+                           Margin="7"/>
+                </Button>
+            </StackPanel>
+            <StackPanel Grid.Column="1"
+                        VerticalAlignment="Center">
+                <TextBlock Text="{Binding Path = CreationDateTime, StringFormat='dd/MM/yyyy'}"
+                           HorizontalAlignment="Right"
+                           Margin="10 0"/>
+                <TextBlock Text="{Binding Path=CreationDateTime, StringFormat='HH:mm'}"
+                           HorizontalAlignment="Right"
+                           Margin="10 0"/>
+            </StackPanel>
+        </Grid>
+        <Grid Grid.Row="1">
+            <TextBox x:Name="textEditTextBox"
+                     Text="{Binding Path=DecodedText, UpdateSourceTrigger=PropertyChanged}"
+                     Style="{StaticResource TextEditingStyle}"/>
+        </Grid>
+    </Grid>
+</Page>
