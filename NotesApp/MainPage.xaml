@@ -23,13 +23,15 @@
                    FontWeight="DemiBold"/>
 
             <TextBox x:Name="SearchTextBox"
+                     TextChanged="SearchTextBox_TextChanged"
                      Style="{StaticResource SearchTextBoxStyle}"/>
         </Grid>
 
         <ListView Grid.Row="1"
                   x:Name="NotesListView"
                   HorizontalContentAlignment="Stretch"
-                  Background="Transparent">
+                  Background="Transparent"
+                  ScrollViewer.HorizontalScrollBarVisibility="Disabled">
             <ListView.ItemTemplate>
                 <DataTemplate>
                     <Grid x:Name="NoteItemGrid"

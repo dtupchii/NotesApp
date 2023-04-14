@@ -17,13 +17,9 @@ using System.Windows.Shapes;
 
 namespace NotesApp
 {
-    /// <summary>
-    /// Interaction logic for MainPage.xaml
-    /// </summary>
     public partial class MainPage : Page
     {
-        string connectionString = "Server=myServerAddress;Database=myDataBase;Trusted_Connection=True;"; 
-        List<Note> notesList;
+        List<Note> notesList = new();
         FileIOServices _file;
         private string path;
         string query;
@@ -68,6 +64,17 @@ namespace NotesApp
             if (no != null)
             {
                 NavigationService.Navigate(new EditingDetailsPage(no));
+            }
+        }
+
+        private void SearchTextBox_TextChanged(object sender, TextChangedEventArgs e)
+        {
+            if (SearchTextBox.Text.Length == 0)
+                NotesListView.ItemsSource = notesList;
+            else
+            {
+                var notesFound = KMP.Search(SearchTextBox.Text, notesList);
+                NotesListView.ItemsSource = notesFound;
             }
         }
     }
